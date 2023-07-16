@@ -154,8 +154,6 @@
                             <button type="button" class="btn btn-success btn-s addDokter"><i class="fa fa-plus"></i></button> Tambah Dokter
                           </th>
                         </tr>
-                        
-
                         <tr>
                           <th>&nbsp;</th>
                           <th>Kode Dokter</th>

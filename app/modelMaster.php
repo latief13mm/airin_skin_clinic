@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
+use Exception;
 
 class modelMaster extends Model
 {	
@@ -129,6 +130,26 @@ class modelMaster extends Model
 
     	return $NoUrutArr;
     }
+
+
+    static function simpanPasienRegister($input){
+    	date_default_timezone_set('Asia/Jakarta');
+    	$noOtomatis = \App\modelMaster::getNoOtomatisPasien();
+    	
+    	$query = DB::table('pasien')
+    			 ->insert([
+    			 	'NoPasien' => $noOtomatis,
+    			 	'namaPas' => $input['nama_pasien'],
+    			 	'almPas' => $input['alamat_pasien'],
+    			 	'telpPas' => $input['telp_pasien'],
+    			 	'tglLahirPas' => $input['tglLahir_pasien'],
+    			 	'jenisKelPas' => $input['jenisKel_pasien'],
+    			 	'tglRegistrasi' => date('Y-m-d')
+    			 ]);
+
+    	if($query) return true; else return false;
+    }
+
 
     static function simpanPasien($input){
     	date_default_timezone_set('Asia/Jakarta');

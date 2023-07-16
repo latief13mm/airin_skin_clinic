@@ -15,10 +15,10 @@ class registerPasienController extends Controller
 
             $input = $request->all();
     
-            $data =  \App\modelMaster::simpanPasienDaftar($input);
+            $data =  \App\modelMaster::simpanPasienRegister($input);
 
             if($data){
-                return redirect('loginCustomer')->with('alert-success','Kamu berhasil Register');
+                return redirect('login/pasien')->with('alert-success','Kamu berhasil Register');
             }else{
                 echo 'Gagal Menyimpan Data dan Mendaftarkan Pasien.';
             }
