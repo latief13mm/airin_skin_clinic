@@ -50,7 +50,7 @@
                         ?>  
                           <li><a href="{{ url('master/pegawai') }}">Pegawai</a></li>
                           <li><a href="{{ url('master/jenis_biaya') }}">Jenis Perawatan</a></li>
-                          <li><a href="{{ url('master/poliklinik') }}">Lokasi Clinic</a></li>
+                          
                         <?php
                       } ?>
       
