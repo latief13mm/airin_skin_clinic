@@ -44,7 +44,7 @@
                   <div class="x_content">
                     <!-- start profile -->
                     <div class="card" style="width: 50rem;">
-                      <img class="img-circle profile_img" src="{{ asset('Assets') }}/production/images/img.jpg">
+                      <img class="img-circle profile_img" src="{{ asset('Assets') }}/production/images/user.png">
                       <div class="card-body" align="center">
                         <h1 class="card-title">{{ $namaPasien }}</h1>
                         <a href="#" class="btn btn-primary">Ubah Foto Profile</a>

@@ -16,7 +16,7 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="{{ asset('Assets') }}/production/images/img.jpg" alt="..." class="img-circle profile_img">
+                <img src="{{ asset('Assets') }}/production/images/user.png" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
@@ -44,13 +44,9 @@
                         <?php
                       } ?>
                       
-                      <li><a href="{{ url('master/obat') }}">Product</a></li>
-                      
                       <?php if($typeUser == 'ADMIN'){
                         ?>  
                           <li><a href="{{ url('master/pegawai') }}">Pegawai</a></li>
-                          <li><a href="{{ url('master/jenis_biaya') }}">Jenis Perawatan</a></li>
-                          
                         <?php
                       } ?>
       
@@ -72,9 +68,7 @@
                           <ul class="nav child_menu">
                             <li><a href="{{ url('laporan/jadwal') }}">Jadwal praktek dokter</a></li>
                             <li><a href="{{ url('laporan/daftar_pasien_sudah') }}">Daftar pasien telah diperiksa</a></li>
-                            <li><a href="{{ url('laporan/daftar_pasien_belum') }}">Daftar pasien belum diperiksa</a></li>
-                            <li><a href="{{ url('laporan/pemasukan_pemeriksaan') }}">Total pemasukan dari pemeriksaan</a></li>
-                            <li><a href="{{ url('laporan/pemasukan_obat') }}">Total penjualan product</a></li>
+                            <li><a href="{{ url('laporan/daftar_pasien_belum') }}">Daftar Reschedule</a></li>
                           </ul>
                         </li>
 
@@ -131,7 +125,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="{{ asset('Assets') }}/production/images/img.jpg" alt="">{{ $namaPegawai }}
+                    <img src="{{ asset('Assets') }}/production/images/user.png" alt="">{{ $namaPegawai }}
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
