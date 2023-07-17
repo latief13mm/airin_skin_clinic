@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
+use Exception;
 
 class modelMaster extends Model
 {	
@@ -129,6 +130,52 @@ class modelMaster extends Model
 
     	return $NoUrutArr;
     }
+
+
+    static function simpanPasienRegister($input){
+		try {
+    	date_default_timezone_set('Asia/Jakarta');
+    	$noOtomatis = \App\modelMaster::getNoOtomatisPasien();
+    	
+    	$query = DB::table('pasien')
+    			 ->insert([
+    			 	'NoPasien' => $noOtomatis,
+    			 	'namaPas' => $input['nama_pasien'],
+    			 	'almPas' => $input['alamat_pasien'],
+    			 	'telpPas' => $input['telp_pasien'],
+    			 	'tglLahirPas' => $input['tglLahir_pasien'],
+    			 	'jenisKelPas' => $input['jenisKel_pasien'],
+    			 	'tglRegistrasi' => date('Y-m-d')
+    			 ]);
+
+				 $queryCHECK = DB::table('login')
+							->where('NoPasien',$noOtomatis)
+							->orderBy('noUser','DESC')
+							->limit('1')
+							->get();
+
+				 $noUser = '';
+				 foreach ($queryCHECK->toArray() as $key => $value) {
+					 $noUser = $value->noUser;
+				 }
+ 
+				 $queryUPD = DB::table('login')
+							 ->where('noUser',$noUser)
+							 ->insert([
+								'username' => $input['username'],
+								'password' =>  bcrypt($input['password']),
+								'typeUser' => 'PASIEN',
+								'NoPasien' => $noOtomatis
+							]);
+
+				 return true;
+		 } catch (Exception $e) {
+				 return false;
+		 }
+
+    	// if($query) return true; else return false;
+    }
+
 
     static function simpanPasien($input){
     	date_default_timezone_set('Asia/Jakarta');

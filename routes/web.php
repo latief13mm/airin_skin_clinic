@@ -157,6 +157,7 @@ Route::middleware(['auth:user'])->group(function () {
 
 	Route::post('simpanAkun','homeController@simpanUser');
 
+	
 });
 
 

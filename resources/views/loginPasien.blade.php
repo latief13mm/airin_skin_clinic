@@ -44,17 +44,14 @@
               <div class="clearfix"></div>
 
                <div>
-                 <input type="checkbox" name="remember" /> Remember Me
+                <input type="checkbox" name="remember" /> Remember Me
                 <input type="submit" value="Sign In" class="btn btn-default submit">
-                <input type="submit" value="Register" class="btn btn-default submit">
                </div>
               
-              
-
               <div class="clearfix"></div>
 
               <div class="separator">
-                
+                <a href="{{ url('register') }}" class="btn btn-default submit">Register</a>
 
                 <div class="clearfix"></div>
                 <br />
