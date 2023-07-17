@@ -71,13 +71,13 @@
 
               <div class="item form-group" style="margin-bottom: 10px;">
                 <span>Username Pasien</span>
-              <input type="text" class="form-control" name="username" placeholder="Username baru" id="uname" required="required">
+              <input type="text" class="form-control" name="username" placeholder="Username baru" id="username" required="required">
               </div>
               
 
               <div class="item form-group">
                 <span>Password Baru</span>
-              <input type="password" class="form-control" name="password" placeholder="Password baru" id="pswd" required="required">
+              <input type="password" class="form-control" name="password" placeholder="Password baru" id="password" required="required">
               </div>
         
               
@@ -89,16 +89,10 @@
               <div class="clearfix"></div>
               <br/>
               <div>
-                <input type="checkbox" name="remember" /> Remember Me
                <input type="submit" value="Submit" class="btn btn-default submit">
-               <input type="submit" value="Cansel" class="btn btn-danger submit">
               </div>
-
-              <div class="clearfix"></div>
-
+                <a href="{{ url('login/pasien') }}"  value="Cansel" class="btn btn-danger submit">Cansel</a>
               <div class="separator">
-                
-
                 <div class="clearfix"></div>
                 <br />
 
