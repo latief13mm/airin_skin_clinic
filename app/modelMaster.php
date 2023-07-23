@@ -215,6 +215,7 @@ class modelMaster extends Model
 	    			 	'jenisKelPas' => $input['jenisKel_pasien'],
 	    			 	'tglRegistrasi' => date('Y-m-d')
 	    			 ]);
+					 
 
 	    	$query2 = DB::table('pendaftaran')
 	    			  ->insert([
@@ -251,6 +252,47 @@ class modelMaster extends Model
 	    			  ]);
 
 	    if($query2) return $NoOtomatisPendaftaran; else return 'zero';
+    }
+
+
+	static function simpanBooking($input){
+
+    	try {
+
+    		date_default_timezone_set('Asia/Jakarta');
+	    	$noOtomatis = \App\modelMaster::getNoOtomatisPasien();
+	    	$NoOtomatisPendaftaran = \App\modelMaster::getNoOtomatisPendaftaran();
+	    	$noUrut = \App\modelMaster::getNoUrut();
+	    	$NoPasien = \App\modelMaster::getDataPasienById();
+
+	    	$query = DB::table('pasien')
+	    			 ->insert([
+	    			 	'NoPasien' => $noOtomatis,
+	    			 	'namaPas' => $input['nama_pasien'],
+	    			 	'almPas' => $input['alamat_pasien'],
+	    			 	'telpPas' => $input['telp_pasien'],
+	    			 	'tglLahirPas' => $input['tglLahir_pasien'],
+	    			 	'jenisKelPas' => $input['jenisKel_pasien'],
+	    			 	'tglRegistrasi' => date('Y-m-d')
+	    			 ]);
+					 
+
+	    	$query2 = DB::table('pendaftaran')
+	    			  ->insert([
+	    			  	'NoPendaftaran' => $NoOtomatisPendaftaran,
+	    			  	'tglPendaftaran' => date('Y-m-d'),
+	    			  	'noUrut' => $noUrut,
+	    			  	'NIP' => $NoPasien,
+	    			  	'NoPasien' => $noOtomatis,
+	    			  	'KodeJadwal' => $input['pilihDokter']
+	    			  ]);
+
+    		return true;
+    	} catch (Exception $e) {
+    		return false;
+    	}
+
+
     }
 
     static function editPasien($input){

@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
+use Exception;
 
 class modelTransaksi extends Model
 {
@@ -35,6 +36,38 @@ class modelTransaksi extends Model
     	date_default_timezone_set('Asia/Jakarta');
     	$now = date('D-m-Y');
     	$trim = substr($now, 0,3);
+
+    	$hari = '';
+
+    	if($trim == 'Mon'){
+    		$hari = 'Senin';
+    	}else if($trim == 'Tue'){
+    		$hari = 'Selasa';
+    	}else if($trim == 'Wed'){
+    		$hari = 'Rabu';
+    	}else if($trim == 'Thu'){
+    		$hari = 'Kamis';
+    	}else if($trim == 'Fri'){
+    		$hari = 'Jumat';
+    	}else if($trim == 'Sat'){
+    		$hari = 'Sabtu';
+    	}else if($trim == 'Sun'){
+    		$hari = 'Minggu';
+    	}
+
+    	$query = DB::table('jadwalpraktek')
+    			 ->selectRaw('jadwalpraktek.*,dokter.nmDokter')
+    			 ->join('dokter','jadwalpraktek.KodeDokter','=','dokter.KodeDokter')
+    			 ->whereRaw('jadwalpraktek.hari = "'.$hari.'"')
+    			 ->get();
+
+    	return $query->toArray();
+    }
+
+	static function getAllDokterSameAsDayAndDate(){
+    	date_default_timezone_set('Asia/Jakarta');
+    	$dateBooking = date('D-m-Y');
+    	$trim = substr($dateBooking, 0,3);
 
     	$hari = '';
 

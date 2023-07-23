@@ -91,7 +91,7 @@
               <div>
                <input type="submit" value="Submit" class="btn btn-default submit">
               </div>
-                <a href="{{ url('login/pasien') }}"  value="Cansel" class="btn btn-danger submit">Cansel</a>
+                <a href="{{ url('login/pasien') }}"  value="Cansel" class="btn btn-danger submit">Cancel</a>
               <div class="separator">
                 <div class="clearfix"></div>
                 <br />

@@ -12,24 +12,6 @@ class controllerMasterPasien extends Controller
     	return view('masterPasien/profile');
     }
 
-    public function pasienSimpanDaftar(Request $request){
-    	$input = $request->all();
-    	
-    	$execute = \App\modelMaster::simpanPasienDaftar($input);
-
-    	if($execute){
-    		echo 'Berhasil Menyimpan Data dan Mendaftarkan Pasien.';
-    	}else{
-    		echo 'Gagal Menyimpan Data dan Mendaftarkan Pasien.';
-    	}
-
-    }
-
-	public function booking(){
-    	$data['Listpasien'] = \App\modelMaster::getDataPasienById();
-    	return view('masterPasien/pasien')->with($data);
-    }
-
 	public function profileUpdate(Request $request){
 		// dd($request->all());
     	$input = $request->all();
@@ -71,12 +53,39 @@ class controllerMasterPasien extends Controller
     }
 
 	public function jadwal_praktek(){
-    	// $data['Listjadwalpraktek'] = \App\modelMaster::getAllDataJadwal();
 		$data['dataPraktek'] = \App\laporanModel::getDataJadwalPraktek();
     	return view('masterPasien/jadwal_praktek')->with($data);
     }
 
 
+	public function booking_v1() {
+		return view('masterPasien/booking');
+	}
 
+	public function booking(){
+    	$data['Listpasien'] = \App\modelMaster::getDataPasienById();
+    	return view('masterPasien/pasien')->with($data);
+    }
+
+	public function pasienSimpanDaftar(Request $request){
+    	$input = $request->all();
+    	
+    	$execute = \App\modelMaster::simpanPasienDaftar($input);
+
+    	if($execute){
+    		echo 'Berhasil Menyimpan Data dan Mendaftarkan Pasien.';
+    	}else{
+    		echo 'Gagal Menyimpan Data dan Mendaftarkan Pasien.';
+    	}
+
+    }
+
+
+	public function getAvailableDoctorsByDateAndDay()
+    {
+
+        $data2 =\App\modelTransaksi::getAllDokterSameAsDayAndDate();
+        return response()->json($data2);
+    }
 
 }

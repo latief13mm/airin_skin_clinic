@@ -2409,75 +2409,100 @@
 			});
 		});
 
-		// $('#saveChangesBtn').click(function() {
-		// 	$('#editProfileForm').submit();
-		// 	});
-		// });
-
-	// Profile CRUD
-	// $(function(){
-
-		// function data_profile_refresh(){
-		// 	var url = '{{ url("pasien/ambil") }}';
-
-		// 	$.get(url,function(res){
-		// 		$('#showProfile').html(res);
-		// 	});
-		// }
-
-		// function berihkan_form_dokter(){
-		// 	$('#nama_pasien').val('');
-		// 	$('#alamat_pasien').val('');
-		// 	$('#telp_pasien').val('');
-		// 	$('#tglLahir_pasien').val('');
-		// 	$('#jenisKel_pasien').val('Laki-Laki');
-		// }
-
-	// 	console.log("buka model ini");
-	// 	$('#showProfile').on('click','.editProfile',function(){
-
-	// 		var nopasien = $(this).closest('tr').find('td:eq(1)').text();
-	// 		var nama = $(this).closest('tr').find('td:eq(2)').text();
-	// 		var alamat = $(this).closest('tr').find('td:eq(3)').text();
-	// 		var telp = $(this).closest('tr').find('td:eq(4)').text();
-	// 		var tglLahir = $(this).closest('tr').find('td:eq(5)').text();
-	// 		var jk = $(this).closest('tr').find('td:eq(6)').text();
-
-	// 		$('#edit_no_pasien').val(nopasien);
-	// 		$('#edit_nama_pasien').val(nama);
-	// 		$('#edit_alamat_pasien').val(alamat);
-	// 		$('#edit_tel_pasien').val(telp);
-	// 		$('#edit_tanggalLahirPasien').val(tglLahir);
-	// 		$('#edit_jenisKelPasien').val(jk);
-
-	// 	});
-
-	// 	$('#simpanEditanProfile').click(function(){
-	// 		var url = '{{ url("profile/editProfile") }}';
-	// 		var data = $('#formEditProfile').serializeArray();
-
-	// 					$.post(url,data,function(res){
-	// 					if(res == 'Berhasil Mengubah Data Profile'){
-	// 						new PNotify({
-	//                             title: 'Information',
-	//                             text: res,
-	//                             type: 'success',
-	//                             styling: 'bootstrap3'
-	//                         });
-	// 						data_profile_refresh();
-	// 					}else{
-	// 						new PNotify({
-	//                             title: 'Information',
-	//                             text: res,
-	//                             type: 'error',
-	//                             styling: 'bootstrap3'
-	//                         });
-	// 					}
-	// 				data_profile_refresh();
-	// 		});
-
-	// 	});
-
-	// });
+		
 	// END OF Profile CRUD
 </script>
+
+{{-- <script>
+	// Booking
+
+	document.getElementById('tanggalBooking').addEventListener('change', function() {
+    var selectedDate = this.value;
+
+    // Ganti bagian ini dengan kode yang memeriksa ketersediaan dokter pada tanggal yang dipilih
+    var hari = getDayOfWeek(selectedDate); // Fungsi yang mengambil nama hari berdasarkan tanggal
+    var availableDoctors = getAvailableDoctors(hari); // Fungsi yang mengambil daftar dokter yang tersedia pada hari tersebut
+
+    // Dapatkan pilihan dokter yang sebelumnya dipilih (jika ada)
+    var selectedDoctor = document.getElementById('pilihDokter').value;
+
+    var pilihDokter = document.getElementById('pilihDokter');
+    pilihDokter.innerHTML = ''; // Reset pilihan dokter
+
+    availableDoctors.forEach(function(doctor) {
+        var option = document.createElement('option');
+        option.value = doctor.KodeJadwal;
+        option.text = doctor.nmDokter;
+        pilihDokter.appendChild(option);
+
+        // Jika ada pilihan dokter sebelumnya dan dokter tersebut masih tersedia pada tanggal baru,
+        // maka tetapkan dokter tersebut sebagai pilihan
+        if (selectedDoctor === doctor.KodeJadwal) {
+            pilihDokter.value = selectedDoctor;
+        }
+    });
+});
+
+// Fungsi untuk mengambil nama hari berdasarkan tanggal
+function getDayOfWeek(selectedDate) {
+    var dateParts = selectedDate.split('-');
+    var selectedDay = new Date(dateParts[2], dateParts[1] - 1, dateParts[0]);
+    var days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+    return days[selectedDay.getDay()];
+}
+
+// Fungsi untuk mendapatkan daftar dokter yang tersedia pada hari tertentu
+function getAvailableDoctors(hari) {
+    // Panggil fungsi getAllDokterSameAsDay dari PHP menggunakan AJAX atau implementasikan langsung di JavaScript dengan PHP sebagai bagian dari kode JavaScript
+    // Pastikan fungsi ini mengembalikan daftar dokter yang tersedia dalam bentuk array
+    // Contoh:
+    var availableDoctors = [
+        { KodeJadwal: 'D0001', nmDokter: 'Dr. Xavier' },
+        { KodeJadwal: 'D0002', nmDokter: 'Dr. Macan Kumbang' },
+		{ KodeJadwal: 'D0003', nmDokter: 'Dr. Kolor' },
+		{ KodeJadwal: 'D0004', nmDokter: 'Dr. Komar' },
+    ];
+
+    return availableDoctors;
+}
+
+	// End Booking
+  </script> --}}
+
+
+  {{-- <script>
+	// Fungsi untuk menangani perubahan nilai pada input tanggal
+	function handleDateChange() {
+	  // Ambil nilai tanggal yang dimasukkan oleh pengguna
+	  var selectedDate = document.getElementById("dateBooking").value;
+	
+	  // Buat permintaan Ajax ke server untuk mengambil daftar dokter berdasarkan tanggal
+	  // Pastikan Anda sudah menyiapkan rute atau endpoint di sisi server untuk mengambil daftar dokter
+	  $.ajax({
+	  url: "/getDokterByDate",
+	  method: "POST",
+	  data: { date: selectedDate }, // Kirim tanggal yang dipilih ke sisi server
+	  success: function (response) {
+	  // Response dari sisi server berisi daftar dokter yang tersedia
+	  // Gunakan response untuk memperbarui daftar dokter dalam elemen select
+	  var dokterSelect = document.getElementById("pilihDokter");
+	  dokterSelect.innerHTML = ""; // Kosongkan daftar dokter saat ini
+	
+	  // Tambahkan opsi dokter ke daftar dokter
+	  for (var i = 0; i < response.length; i++) {
+	  var option = document.createElement("option");
+	  option.value = response[i].KodeJadwal;
+	  option.text = response[i].nmDokter;
+	  dokterSelect.appendChild(option);
+	  }
+	  },
+	  error: function () {
+	  console.log("Terjadi kesalahan saat mengambil data dokter.");
+	  },
+	  });
+	}
+	
+	// Tambahkan event listener untuk mendengarkan perubahan nilai pada input tanggal
+	document.getElementById("dateBooking").addEventListener("change", handleDateChange);
+  
+  </script> --}}
