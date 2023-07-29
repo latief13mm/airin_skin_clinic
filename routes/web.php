@@ -171,7 +171,6 @@ Route::middleware(['auth:pasien'])->group(function () {
 	Route::get('pendaftaranPasien/cetaknoUrut/{id}','transactionPasienController@noUrut_cetak_pasien');
 
 	// BOOKING CUSTOMER
-	Route::get('booking','controllerMasterPasien@booking_v1');
 	Route::get('booking/bookingNow','controllerMasterPasien@booking');
 	Route::get('booking/bookingDokter','transactionPasienController@pendaftaran_pasien');
 	Route::get('booking/resep','transactionPasienController@resepPasien');
@@ -180,7 +179,11 @@ Route::middleware(['auth:pasien'])->group(function () {
 	Route::get('getDokterByDate','controllerMasterPasien@getAvailableDoctorsByDateAndDay')->name('getDokterByDate');
 	// end pendaftaran existing
 
-	//PROFILE Customer
+	//NEW BOOKING PASIEN
+	Route::get('booking','controllerMasterPasien@booking_v1');
+	Route::post('booking/bookingNowPost','controllerMasterPasien@pasienSimpanBooking');
+
+	//PROFILE Pasien
 	Route::get('profile/jenis_treatment','controllerMasterPasien@jenis_biaya');
 	Route::get('profile/jadwalOperasional','controllerMasterPasien@jadwal_praktek');
 

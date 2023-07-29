@@ -269,11 +269,6 @@ class modelMaster extends Model
 	    			 ->insert([
 	    			 	'NoPasien' => $noOtomatis,
 	    			 	'namaPas' => $input['nama_pasien'],
-	    			 	'almPas' => $input['alamat_pasien'],
-	    			 	'telpPas' => $input['telp_pasien'],
-	    			 	'tglLahirPas' => $input['tglLahir_pasien'],
-	    			 	'jenisKelPas' => $input['jenisKel_pasien'],
-	    			 	'tglRegistrasi' => date('Y-m-d')
 	    			 ]);
 					 
 
@@ -282,12 +277,15 @@ class modelMaster extends Model
 	    			  	'NoPendaftaran' => $NoOtomatisPendaftaran,
 	    			  	'tglPendaftaran' => date('Y-m-d'),
 	    			  	'noUrut' => $noUrut,
-	    			  	'NIP' => $NoPasien,
-	    			  	'NoPasien' => $noOtomatis,
+	    			  	'NoPasien' => $NoPasien,
 	    			  	'KodeJadwal' => $input['pilihDokter']
 	    			  ]);
 
-    		return true;
+    		if ($query2){
+				return $NoOtomatisPendaftaran;
+			} else {
+				return 'zero';
+			}
     	} catch (Exception $e) {
     		return false;
     	}
@@ -534,7 +532,6 @@ class modelMaster extends Model
                 return false;
         }
 
-    	// if($query) return true;else return false;
     }
 
     static function simpanPerubahanPegawai($input){

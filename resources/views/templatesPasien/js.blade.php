@@ -63,18 +63,12 @@
 			e.preventDefault();
 
 			if($('#nama_pasien').val() == '' || $('#alamat_pasien').val() == '' || $('#telp_pasien').val() == '' || $('#tglLahir_pasien').val() == ''){
-
-				
-
 				 		new PNotify({
                                   title: 'Information',
                                   text: 'Tidak ada data yang diinput!',
                                   type: 'error',
                                   styling: 'bootstrap3'
                               });
-
-
-
 			}else{
 
 				$('#konfirmasi_daftar').attr('hidden',false);
@@ -84,6 +78,8 @@
 			}
 
 		});
+
+		//tombol untuk memunculkan konfirmasi daftar
 
 		var kodePasien = '';
 
@@ -2370,7 +2366,7 @@
 
 
 <script>
-	 $(document).ready(function() {
+	$(document).ready(function() {
 	$('#editProfile').on('show.bs.modal', function (event) {
 			var button = $(event.relatedTarget) 
 			var edit_no_pasien = button.data('nopasien')
@@ -2412,6 +2408,122 @@
 		
 	// END OF Profile CRUD
 </script>
+
+
+<script type="text/javascript">
+
+	// PASIEN BOOKING
+	$(function(){
+
+		$('.toolEditPasien').attr('hidden',true);
+		$('.holderToolEditPasien').attr('hidden',true);
+
+		//tombol untuk memunculkan konfirmasi daftar
+
+		var kodePasien = '';
+
+		$('#showPasien').on('click','.bookingPasien',function(){
+			var kode = $(this).closest('tr').find('td:eq(1)').text();
+
+			var url = '{{ url("pasien/cekDaftar") }}/'+kode;
+
+			$.get(url,function(res){
+				$('.keteranganDaftar').html(res);
+			});
+
+			$('#konfirmasi_daftarPasien').attr('hidden',false);
+			$('#konfirmasi_daftarPasien').fadeOut();
+			$('#konfirmasi_daftarPasien').fadeIn();
+			kodePasien = kode;
+		});
+
+		$('#executeBookingPasien').click(function(){
+			
+			var kode = kodePasien;
+			var form = $('#bookingPasienForm');
+			var url = '{{ url("pasien/daftarkanNow") }}/'+kode;
+			$.get(url,function(res){
+
+				if(res != 'Gagal Mendaftarkan Pasien ke daftar tunggu.'){
+						new PNotify({
+                            title: 'Information',
+                            text: res,
+                            hide: false,
+                            type: 'success',
+                            styling: 'bootstrap3'
+                        });
+					}else{
+						new PNotify({
+                            title: 'Information',
+                            text: res,
+                            type: 'error',
+                            styling: 'bootstrap3'
+                        });
+					}
+
+				$('#konfirmasi_daftarPasien').attr('hidden',true);
+				$('#konfirmasi_daftarPasien').fadeOut();
+
+			});
+
+		});
+
+		$('#tidakJadiBookingPasien').click(function(){
+			$('#konfirmasi_daftarPasien').attr('hidden',true);
+			$('#konfirmasi_daftarPasien').fadeOut();
+		});
+
+
+		$('#simpanBookingPasien').click(function(e){
+			e.preventDefault();
+
+			if($('#nama_pasien').val() == '' || $('#tglPendaftaran').val() == ''){
+				new PNotify({
+	                            title: 'Information',
+	                            text: 'Tidak ada yang di input',
+	                            type: 'error',
+	                            styling: 'bootstrap3'
+	                        });
+			}else{
+
+				var url = '{{ url("booking/bookingNowPost") }}';
+				var data = $('#bookingPasienForm').serializeArray();
+
+				$.post(url,data,function(res){
+
+					if(res == 'Berhasil Manambahkan Bookingan Baru'){
+							new PNotify({
+	                            title: 'Information',
+	                            text: res,
+	                            type: 'success',
+	                            styling: 'bootstrap3'
+	                        });
+
+						}else{
+							new PNotify({
+	                            title: 'Information',
+	                            text: res,
+	                            type: 'error',
+	                            styling: 'bootstrap3'
+	                        });
+						}
+
+					berihkan_form_dokter();
+					data_dokter_refresh();
+
+				});
+
+			}
+
+			
+		});
+                                    
+
+	});
+	// END OF BOOKING PASIEN
+</script>
+
+
 
 {{-- <script>
 	// Booking

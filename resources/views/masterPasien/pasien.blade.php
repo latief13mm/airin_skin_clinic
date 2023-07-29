@@ -83,8 +83,6 @@
                             <thead>
                               <tr>
                               </tr>
-                              
-
                               <tr>
                                 <th class="holderToolPasien" ></th>
                                 <th>No Pasien</th>
@@ -105,7 +103,7 @@
                                     ?>
                                       <tr>
                                         <td style="width: 100px;" class="toolPasien" style="display: none;">
-                                          {{-- <button type="button" class="btn btn-info btn-s editPasien" ><i class="fa fa-edit"></i></button><button type="button" class="btn btn-danger btn-s deletePasien"><i class="fa fa-trash"></i></button> --}}
+                                          <button type="button" class="btn btn-info btn-s editPasien" ><i class="fa fa-book"></i></button><button type="button" class="btn btn-danger btn-s deletePasien"><i class="fa fa-trash"></i></button>
                                         </td>
                                         <td>{{ $value->NoPasien }}</td>
                                         <td>{{ $value->namaPas }}</td>

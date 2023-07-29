@@ -36,16 +36,6 @@ class controllerMasterPasien extends Controller
     	}
     }
 
-    public function daftarkanPasienNow($id){
-    	$execute = \App\modelMaster::simpanPasienTunggu($id);
-
-    	if($execute != 'zero'){
-    		$link = url('pendaftaran/cetaknoUrut').'/'.$execute;
-    		echo "Berhasil Mendaftarkan Pasien ke daftar tunggu. Tentukan jadwal dokter nya di form transaksi. <br/><a class='btn btn-info btn-xs' target='_blank' href='".$link."'>Cetak No Urut</a>";
-    	}else{
-    		echo "Gagal Mendaftarkan Pasien ke daftar tunggu.";
-    	}
-    }
 
 	public function jenis_biaya(){
     	$data['Listjenisbiaya'] = \App\modelMaster::getListJenisBiaya();
@@ -67,6 +57,32 @@ class controllerMasterPasien extends Controller
     	return view('masterPasien/pasien')->with($data);
     }
 
+
+	public function daftarkanPasienNow($id){
+    	$execute = \App\modelMaster::simpanPasienTunggu($id);
+
+    	if($execute != 'zero'){
+    		$link = url('pendaftaran/cetaknoUrut').'/'.$execute;
+    		echo "Berhasil Mendaftarkan Pasien ke daftar tunggu. Tentukan jadwal dokter nya di form transaksi. <br/><a class='btn btn-info btn-xs' target='_blank' href='".$link."'>Cetak No Urut</a>";
+    	}else{
+    		echo "Gagal Mendaftarkan Pasien ke daftar tunggu.";
+    	}
+    }
+
+	public function pasienSimpanBooking(Request $request){
+    	$input = $request->all();
+    	
+    	$execute = \App\modelMaster::simpanBooking($input);
+
+    	if($execute){
+    		echo 'Berhasil Menyimpan Data dan Mendaftarkan Pasien.';
+    	}else{
+    		echo 'Gagal Menyimpan Data dan Mendaftarkan Pasien.';
+    	}
+
+    }
+
+
 	public function pasienSimpanDaftar(Request $request){
     	$input = $request->all();
     	
@@ -79,6 +95,7 @@ class controllerMasterPasien extends Controller
     	}
 
     }
+
 
 
 	public function getAvailableDoctorsByDateAndDay()
