@@ -167,10 +167,7 @@ Route::middleware(['auth:pasien'])->group(function () {
 
 	Route::get('loginPasien','loginPasienController@showLoginCustomerForm');
 
-
-	Route::get('pendaftaranPasien/cetaknoUrut/{id}','transactionPasienController@noUrut_cetak_pasien');
-
-	// BOOKING CUSTOMER
+	// BOOKING CUSTOMER LAMA
 	Route::get('booking/bookingNow','controllerMasterPasien@booking');
 	Route::get('booking/bookingDokter','transactionPasienController@pendaftaran_pasien');
 	Route::get('booking/resep','transactionPasienController@resepPasien');
@@ -181,7 +178,8 @@ Route::middleware(['auth:pasien'])->group(function () {
 
 	//NEW BOOKING PASIEN
 	Route::get('booking','controllerMasterPasien@booking_v1');
-	Route::post('booking/bookingNowPost','controllerMasterPasien@pasienSimpanBooking');
+    Route::get('booking/cetaknoUrut/{id}','transactionPasienController@noUrut_cetak_pasien');
+	Route::get('booking/bookingNow/{id}','controllerMasterPasien@pasienSimpanBooking');
 
 	//PROFILE Pasien
 	Route::get('profile/jenis_treatment','controllerMasterPasien@jenis_biaya');
@@ -197,6 +195,6 @@ Route::middleware(['auth:pasien'])->group(function () {
 
 	Route::post('pasien/simpanDaftar','controllerMasterPasien@pasienSimpanDaftar');
 	Route::get('pasien/cekDaftar/{id}','controllerMasterPasien@cekPasienDaftar');
-	Route::get('pasien/daftarkanNow/{id}','controllerMasterPasien@daftarkanPasienNow');
+//	Route::get('pasien/daftarkanNow/{id}','controllerMasterPasien@daftarkanPasienNow');
 
 });

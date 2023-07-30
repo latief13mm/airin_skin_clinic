@@ -1,4 +1,4 @@
-@extends('templates/header')
+@extends('templatesPasien/header')
 @section('content')
 <div class="container body">
       <div class="main_container">
@@ -15,11 +15,8 @@
               <div class="title_left">
                 <h3>Transaksi <small>Create</small></h3>
               </div>
-
             </div>
-
             <div class="clearfix"></div>
-
             <div class="row">
               <div class="col-md-6">
                 <div class="x_panel">
@@ -105,7 +102,7 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                  <form action="{{ url('pendaftaran/simpan') }}" method="POST" id="formPilihDokter">
+                  <form action="{{ url('pendaftaranPasien/simpan') }}" method="POST" id="formPilihDokter">
                     {{ csrf_field() }}
                      <?php
                       date_default_timezone_set('Asia/Jakarta');
@@ -162,16 +159,15 @@
                       </tbody>
                     </table>
                     <!-- end project list -->
-
+                    </div>
                   </div>
                 </div>
-              </div>
               </form>
             </div>
           </div>
         </div>
 
-        <div class="modal fade modal_konfirmasi" tabindex="-1" role="dialog" aria-hidden="true">
+                  <div class="modal fade modal_konfirmasi" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-sm">
                       <div class="modal-content">
                        
@@ -194,12 +190,9 @@
                         <div class="modal-footer">
                           <small>KEFKA</small>
                         </div>
-                     
                       </div>
                     </div>
                   </div>
-
-
 @endsection
 
 

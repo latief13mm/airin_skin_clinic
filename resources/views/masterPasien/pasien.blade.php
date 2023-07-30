@@ -26,8 +26,7 @@
                 <div class="clearfix"></div>
                 <div class="row">
                   <div class="col-md-12 col-sm-12 col-xs-12">
-                    <div class="showTooltips">
-                    </div>
+                    <div class="showTooltips"></div>
                     <div class="clearfix"></div>
                     <div class="row">
                       <div class="x_panel">
@@ -116,19 +115,17 @@
                                       </tr>
                                     <?php
                                   }
-                                ?>  
-                              
-                            </tbody>
-                            
-                          </table>
-                          
+                                ?>
+                              </tbody>
+                            </table>
+                          </div>
                         </div>
                       </div>
+                    </div>
+
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
 @endsection
 
 

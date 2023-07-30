@@ -20,6 +20,16 @@ class modelTransaksi extends Model
     	return $query->toArray();
     }
 
+    static function getCetakPendaftaranPasienByID($id){
+        $query = DB::table('pendaftaran')
+            ->selectRaw('pendaftaran.*,pasien.namaPas')
+            ->where('pendaftaran.NoPendaftaran',$id)
+            ->join('pasien','pendaftaran.NoPasien','=','pasien.NoPasien')
+            ->get();
+
+        return $query->toArray();
+    }
+
     static function getAllDataPendaftaranPasien(){
     	date_default_timezone_set('Asia/Jakarta');
     	$query = DB::table('pendaftaran')
@@ -32,42 +42,25 @@ class modelTransaksi extends Model
     	return $query->toArray();
     }
 
+    static function getPendaftaranPasienByAuth(){
+        date_default_timezone_set('Asia/Jakarta');
+        $user_id = Auth::id();
+
+        $query = DB::table('pendaftaran')
+            ->selectRaw('pendaftaran.*, pasien.namaPas')
+            ->leftJoin('login', 'pendaftaran.NoPasien', '=', 'login.NoPasien')
+            ->join('pasien', 'pendaftaran.NoPasien', '=', 'pasien.NoPasien')
+            ->whereRaw('pendaftaran.tglPendaftaran = "'.date('Y-m-d').'" AND login.noUser = '.$user_id)
+            ->orderBy('noUrut', 'ASC')
+            ->get();
+
+        return $query->toArray();
+    }
+
     static function getAllDokterSameAsDay(){
     	date_default_timezone_set('Asia/Jakarta');
     	$now = date('D-m-Y');
     	$trim = substr($now, 0,3);
-
-    	$hari = '';
-
-    	if($trim == 'Mon'){
-    		$hari = 'Senin';
-    	}else if($trim == 'Tue'){
-    		$hari = 'Selasa';
-    	}else if($trim == 'Wed'){
-    		$hari = 'Rabu';
-    	}else if($trim == 'Thu'){
-    		$hari = 'Kamis';
-    	}else if($trim == 'Fri'){
-    		$hari = 'Jumat';
-    	}else if($trim == 'Sat'){
-    		$hari = 'Sabtu';
-    	}else if($trim == 'Sun'){
-    		$hari = 'Minggu';
-    	}
-
-    	$query = DB::table('jadwalpraktek')
-    			 ->selectRaw('jadwalpraktek.*,dokter.nmDokter')
-    			 ->join('dokter','jadwalpraktek.KodeDokter','=','dokter.KodeDokter')
-    			 ->whereRaw('jadwalpraktek.hari = "'.$hari.'"')
-    			 ->get();
-
-    	return $query->toArray();
-    }
-
-	static function getAllDokterSameAsDayAndDate(){
-    	date_default_timezone_set('Asia/Jakarta');
-    	$dateBooking = date('D-m-Y');
-    	$trim = substr($dateBooking, 0,3);
 
     	$hari = '';
 

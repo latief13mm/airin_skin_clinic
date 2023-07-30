@@ -255,41 +255,23 @@ class modelMaster extends Model
     }
 
 
-	static function simpanBooking($input){
+	static function simpanBooking($id){
+        date_default_timezone_set('Asia/Jakarta');
+        $NoOtomatisPendaftaran = \App\modelMaster::getNoOtomatisPendaftaran();
+        $noUrut = \App\modelMaster::getNoUrut();
+        $nip = \App\modelMaster::getUser();
 
-    	try {
+        $query2 = DB::table('pendaftaran')
+            ->insert([
+                'NoPendaftaran' => $NoOtomatisPendaftaran,
+                'tglPendaftaran' => date('Y-m-d'),
+                'noUrut' => $noUrut,
+                'NIP' => $nip,
+                'NoPasien' => $id,
+                'KodeJadwal' => 'NOTHING'
+            ]);
 
-    		date_default_timezone_set('Asia/Jakarta');
-	    	$noOtomatis = \App\modelMaster::getNoOtomatisPasien();
-	    	$NoOtomatisPendaftaran = \App\modelMaster::getNoOtomatisPendaftaran();
-	    	$noUrut = \App\modelMaster::getNoUrut();
-	    	$NoPasien = \App\modelMaster::getDataPasienById();
-
-	    	$query = DB::table('pasien')
-	    			 ->insert([
-	    			 	'NoPasien' => $noOtomatis,
-	    			 	'namaPas' => $input['nama_pasien'],
-	    			 ]);
-					 
-
-	    	$query2 = DB::table('pendaftaran')
-	    			  ->insert([
-	    			  	'NoPendaftaran' => $NoOtomatisPendaftaran,
-	    			  	'tglPendaftaran' => date('Y-m-d'),
-	    			  	'noUrut' => $noUrut,
-	    			  	'NoPasien' => $NoPasien,
-	    			  	'KodeJadwal' => $input['pilihDokter']
-	    			  ]);
-
-    		if ($query2){
-				return $NoOtomatisPendaftaran;
-			} else {
-				return 'zero';
-			}
-    	} catch (Exception $e) {
-    		return false;
-    	}
-
+        if($query2) return $NoOtomatisPendaftaran; else return 'zero';
 
     }
 
