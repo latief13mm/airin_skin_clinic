@@ -254,6 +254,29 @@ class modelMaster extends Model
 	    if($query2) return $NoOtomatisPendaftaran; else return 'zero';
     }
 
+//    coba cetak nomor urut
+    static function ambilNomorUrut($id)
+    {
+        return self::cetakNomorUrut($id);
+    }
+
+
+
+
+
+    static function cetakNomorUrut($id){
+        date_default_timezone_set('Asia/Jakarta');
+        $query2 = DB::table('pendaftaran')
+            ->where('NoPendaftaran', $id)
+            ->first();
+
+        if ($query2) {
+            return $query2->NoPendaftaran;
+        } else {
+            return 'zero';
+        }
+    }
+
 
 	static function simpanBooking($id){
         date_default_timezone_set('Asia/Jakarta');

@@ -1,372 +1,3 @@
-{{--<script type="text/javascript">--}}
-
-{{--	// PASIEN CRUD--}}
-{{--	$(function(){--}}
-{{--		$('.toolEditPasien').attr('hidden',true);--}}
-{{--		$('.holderToolEditPasien').attr('hidden',true);--}}
-
-{{--		$('#dataPasien').dataTable();--}}
-
-{{--		$('#keteranganDataPasien').html('Untuk menambah data, tekan tanda <i class="fa fa-plus"></i> dibawah.');--}}
-
-{{--		function bersihFORMPasien(){--}}
-{{--			$('#nama_pasien').val('');--}}
-{{--			$('#alamat_pasien').val('');--}}
-{{--			$('#telp_pasien').val('');--}}
-{{--			$('#tglLahir_pasien').val('');--}}
-{{--			$('#jenisKel_pasien').val('Laki-Laki');--}}
-{{--			$('#konfirmasi_daftar').attr('hidden',true);--}}
-{{--			$('#konfirmasi_daftar').fadeOut();--}}
-{{--			$('#konfirmasi_daftarPasien').attr('hidden',true);--}}
-{{--			$('#konfirmasi_daftarPasien').fadeOut();--}}
-{{--		}--}}
-{{--		--}}
-{{--		$('.addPasien').click(function(){--}}
-{{--			$('#tableAddPasien').attr('hidden',false);--}}
-{{--			$('#tableAddPasien').fadeOut();--}}
-{{--			$('#keteranganDataPasien').html('Isi form dibawah setelah selesai, tekan tanda <i class="fa fa-check"></i> dibawah. Jika tidak jadi menambah tekan tanda <i class="fa fa-close"></i> dibawah.');--}}
-
-{{--			bersihFORMPasien();--}}
-
-{{--			$('#tableAddPasien').fadeIn();--}}
-{{--		});--}}
-
-{{--		$('.cancelPasien').click(function(){--}}
-{{--			$('#tableAddPasien').fadeOut();--}}
-{{--			bersihFORMPasien();--}}
-{{--			$('#keteranganDataPasien').html('Untuk menambah data, tekan tanda <i class="fa fa-plus"></i> dibawah.');--}}
-{{--			$('#tableAddPasien').attr('hidden',true);--}}
-
-{{--		});--}}
-
-{{--		function data_pasien_refresh(){--}}
-{{--			var url = '{{ url("pasien/ambil") }}';--}}
-{{--			$.get(url,function(res){--}}
-{{--				$('#showPasien').html('');--}}
-
-{{--				$('#showPasien').append(res);--}}
-
-{{--				$('.toolPasien').fadeOut();--}}
-{{--				$('.toolPasien').fadeIn();--}}
-
-{{--				$('.toolPasien').html('');--}}
-
-{{--				$('.toolPasien').html(--}}
-{{--					'<button type="button" class="btn btn-info btn-s editPasien">'+--}}
-{{--					'<i class="fa fa-edit"></i></button>'+--}}
-{{--					'<button type="button" class="btn btn-danger btn-s deletePasien">'+--}}
-{{--					'<i class="fa fa-trash"></i></button>');--}}
-{{--			});--}}
-{{--		}--}}
-
-{{--		$('.savePasien').click(function(e){--}}
-{{--			e.preventDefault();--}}
-
-{{--			if($('#nama_pasien').val() == '' || $('#alamat_pasien').val() == '' || $('#telp_pasien').val() == '' || $('#tglLahir_pasien').val() == ''){--}}
-{{--				 		new PNotify({--}}
-{{--                                  title: 'Information',--}}
-{{--                                  text: 'Tidak ada data yang diinput!',--}}
-{{--                                  type: 'error',--}}
-{{--                                  styling: 'bootstrap3'--}}
-{{--                              });--}}
-{{--			}else{--}}
-
-{{--				$('#konfirmasi_daftar').attr('hidden',false);--}}
-{{--				$('#konfirmasi_daftar').fadeOut();--}}
-{{--				$('#konfirmasi_daftar').fadeIn();--}}
-
-{{--			}--}}
-
-{{--		});--}}
-
-{{--		//tombol untuk memunculkan konfirmasi daftar--}}
-
-{{--		var kodePasien = '';--}}
-
-{{--		$('#showPasien').on('click','.daftarkanPasien',function(){--}}
-{{--			var kode = $(this).closest('tr').find('td:eq(1)').text();--}}
-
-{{--			var url = '{{ url("pasien/cekDaftar") }}/'+kode;--}}
-
-{{--			$.get(url,function(res){--}}
-{{--				$('.keteranganDaftar').html(res);--}}
-{{--			});--}}
-
-{{--			$('#konfirmasi_daftarPasien').attr('hidden',false);--}}
-{{--			$('#konfirmasi_daftarPasien').fadeOut();--}}
-{{--			$('#konfirmasi_daftarPasien').fadeIn();--}}
-{{--			kodePasien = kode;--}}
-{{--		});--}}
-
-{{--		$('#executeDaftarPasien').click(function(){--}}
-{{--			--}}
-{{--			var kode = kodePasien;--}}
-{{--			var url = '{{ url("pasien/daftarkanNow") }}/'+kode;--}}
-{{--			$.get(url,function(res){--}}
-
-{{--				if(res != 'Gagal Mendaftarkan Pasien ke daftar tunggu.'){--}}
-{{--						new PNotify({--}}
-{{--                            title: 'Information',--}}
-{{--                            text: res,--}}
-{{--                            hide: false,--}}
-{{--                            type: 'success',--}}
-{{--                            styling: 'bootstrap3'--}}
-{{--                        });--}}
-{{--					}else{--}}
-{{--						new PNotify({--}}
-{{--                            title: 'Information',--}}
-{{--                            text: res,--}}
-{{--                            type: 'error',--}}
-{{--                            styling: 'bootstrap3'--}}
-{{--                        });--}}
-{{--					}--}}
-
-{{--				$('#konfirmasi_daftarPasien').attr('hidden',true);--}}
-{{--				$('#konfirmasi_daftarPasien').fadeOut();--}}
-
-{{--			});--}}
-
-{{--		});--}}
-
-{{--		$('#tidakJadiDaftarPasien').click(function(){--}}
-{{--			$('#konfirmasi_daftarPasien').attr('hidden',true);--}}
-{{--			$('#konfirmasi_daftarPasien').fadeOut();--}}
-{{--		});--}}
-
-{{--		$('#executeBiasa').click(function(){--}}
-{{--			var dataPasien = $('#formADDPasien').serializeArray();--}}
-{{--			var urlSimpan = '{{ url("pasien/simpan") }}';--}}
-
-{{--			$.post(urlSimpan,dataPasien,function(res){--}}
-
-{{--					if(res = 'Berhasil Menyimpan Data Pasien'){--}}
-{{--						new PNotify({--}}
-{{--                            title: 'Information',--}}
-{{--                            text: res,--}}
-{{--                            type: 'success',--}}
-{{--                            styling: 'bootstrap3'--}}
-{{--                        });--}}
-{{--					}else{--}}
-{{--						new PNotify({--}}
-{{--                            title: 'Information',--}}
-{{--                            text: res,--}}
-{{--                            type: 'error',--}}
-{{--                            styling: 'bootstrap3'--}}
-{{--                        });--}}
-{{--					}--}}
-{{--							--}}
-
-{{--				bersihFORMPasien();--}}
-{{--				data_pasien_refresh();--}}
-{{--			});--}}
-{{--		});--}}
-
-{{--		$('#executeDaftar').click(function(){--}}
-{{--			var dataPasien = $('#formADDPasien').serializeArray();--}}
-{{--			var urlSimpan = '{{ url("pasien/simpanDaftar") }}';--}}
-
-{{--			$.post(urlSimpan,dataPasien,function(res){--}}
-
-{{--					if(res = 'Berhasil Menyimpan Data dan Mendaftarkan Pasien.'){--}}
-{{--						new PNotify({--}}
-{{--                            title: 'Information',--}}
-{{--                            text: res,--}}
-{{--                            type: 'success',--}}
-{{--                            styling: 'bootstrap3'--}}
-{{--                        });--}}
-{{--					}else{--}}
-{{--						new PNotify({--}}
-{{--                            title: 'Information',--}}
-{{--                            text: res,--}}
-{{--                            type: 'error',--}}
-{{--                            styling: 'bootstrap3'--}}
-{{--                        });--}}
-{{--					}--}}
-{{--							--}}
-
-{{--				bersihFORMPasien();--}}
-{{--				data_pasien_refresh();--}}
-{{--			});--}}
-{{--		});--}}
-
-{{--		$('#showPasien').on('click','.editPasien',function(){--}}
-{{--			var nopasien = $(this).closest('tr').find('td:eq(1)').text();--}}
-{{--			var nama = $(this).closest('tr').find('td:eq(2)').text();--}}
-{{--			var alamat = $(this).closest('tr').find('td:eq(3)').text();--}}
-{{--			var telp = $(this).closest('tr').find('td:eq(4)').text();--}}
-{{--			var tglLahir = $(this).closest('tr').find('td:eq(5)').text();--}}
-{{--			var jk = $(this).closest('tr').find('td:eq(6)').text();--}}
-{{--			var tglReg = $(this).closest('tr').find('td:eq(7)').text();--}}
-
-{{--			$(this).closest('tr').find('td:eq(1)').html('<input type="hidden" name="noPasienEdit" class="form-control nopasEdit" value = "'+nopasien+'" readonly /></input><center><b>HIDDEN</b></center>');--}}
-{{--			$(this).closest('tr').find('td:eq(2)').html('<input type="text" name="namaEdit" class="form-control namapasEdit" value = "'+nama+'" /></input>');--}}
-{{--			$(this).closest('tr').find('td:eq(3)').html('<input type="text" name="alamatEdit" class="form-control alamatPasEdit" value = "'+alamat+'" /></input>');--}}
-{{--			$(this).closest('tr').find('td:eq(4)').html('<input type="text" name="telpEdit" class="form-control telpPasEdit" value = "'+telp+'" /></input>');--}}
-{{--			$(this).closest('tr').find('td:eq(5)').html('<input type="date" name="tglLahirEdit" class="form-control tglLahirPasEdit" value = "'+tglLahir+'" /></input>');--}}
-
-{{--			if(jk == 'Laki-Laki'){--}}
-{{--				$(this).closest('tr').find('td:eq(6)').html('<select name="jkEdit" class="form-control jkPasEdit"><option value="Laki-Laki" selected="true">Laki-Laki</option><option value="Perempuan">Perempuan</option></select>');--}}
-{{--			}else{--}}
-{{--				$(this).closest('tr').find('td:eq(6)').html('<select name="jkEdit" class="form-control jkPasEdit"><option value="Laki-Laki">Laki-Laki</option><option value="Perempuan" selected="true">Perempuan</option></select>');--}}
-{{--			}--}}
-{{--			--}}
-{{--			$(this).closest('tr').find('td:eq(7)').html('<input type="date" name="tglReg" class="form-control tglRegEdit" value = "'+tglReg+'" readonly /></input>');--}}
-
-{{--			$(this).closest('tr').find('.toolPasien').fadeOut();--}}
-{{--			$(this).closest('tr').find('.toolPasien').fadeIn();--}}
-
-{{--			$(this).closest('tr').find('.toolPasien').html(--}}
-{{--				'<button type="button" class="btn btn-success btn-s simpanEdit">'+--}}
-{{--				'<i class="fa fa-check"></i></button>'+--}}
-{{--				'<button type="button" class="btn btn-danger btn-s gagalEdit">'+--}}
-{{--				'<i class="fa fa-close"></i></button>');   --}}
-
-{{--			$('#konfirmasi_daftar').attr('hidden',true);--}}
-{{--			$('#konfirmasi_daftar').fadeOut();    --}}
-{{--			$('#konfirmasi_daftarPasien').attr('hidden',true);--}}
-{{--			$('#konfirmasi_daftarPasien').fadeOut();               --}}
-
-{{--		});--}}
-
-
-{{--		$('#showPasien').on('click','.gagalEdit',function(){--}}
-{{--			var nopasien = $(this).closest('tr').find('.nopasEdit').val();--}}
-{{--			var nama = $(this).closest('tr').find('.namapasEdit').val();--}}
-{{--			var alamat = $(this).closest('tr').find('.alamatPasEdit').val();--}}
-{{--			var telp = $(this).closest('tr').find('.telpPasEdit').val();--}}
-{{--			var tglLahir = $(this).closest('tr').find('.tglLahirPasEdit').val();--}}
-{{--			var jk = $(this).closest('tr').find('.jkPasEdit').val();--}}
-{{--			var tglReg = $(this).closest('tr').find('.tglRegEdit').val();--}}
-
-{{--			$(this).closest('tr').find('td:eq(1)').html(nopasien);--}}
-{{--			$(this).closest('tr').find('td:eq(2)').html(nama);--}}
-{{--			$(this).closest('tr').find('td:eq(3)').html(alamat);--}}
-{{--			$(this).closest('tr').find('td:eq(4)').html(telp);--}}
-{{--			$(this).closest('tr').find('td:eq(5)').html(tglLahir);--}}
-{{--			$(this).closest('tr').find('td:eq(6)').html(jk);--}}
-{{--			$(this).closest('tr').find('td:eq(7)').html(tglReg);--}}
-
-{{--			$(this).closest('tr').find('.toolPasien').fadeOut();--}}
-{{--			$(this).closest('tr').find('.toolPasien').fadeIn();--}}
-
-{{--			$(this).closest('tr').find('.toolPasien').html(--}}
-{{--				'<button type="button" class="btn btn-info btn-s editPasien">'+--}}
-{{--				'<i class="fa fa-edit"></i></button>'+--}}
-{{--				'<button type="button" class="btn btn-danger btn-s deletePasien">'+--}}
-{{--				'<i class="fa fa-trash"></i></button>');--}}
-
-{{--			$('#konfirmasi_daftar').attr('hidden',true);--}}
-{{--			$('#konfirmasi_daftar').fadeOut();--}}
-{{--			$('#konfirmasi_daftarPasien').attr('hidden',true);--}}
-{{--			$('#konfirmasi_daftarPasien').fadeOut();--}}
-{{--			--}}
-{{--		});--}}
-
-
-{{--		$('#showPasien').on('click','.simpanEdit',function(){--}}
-{{--			var urlEdit = '{{ url("pasien/edit") }}';--}}
-{{--			var data = $('#formEditPasien').serializeArray();--}}
-
-{{--			$.post(urlEdit,data,function(res){--}}
-{{--				if(res = 'Berhasil Mengubah Data Pasien'){--}}
-{{--						new PNotify({--}}
-{{--                            title: 'Information',--}}
-{{--                            text: res,--}}
-{{--                            type: 'success',--}}
-{{--                            styling: 'bootstrap3'--}}
-{{--                        });--}}
-{{--					}else{--}}
-{{--						new PNotify({--}}
-{{--                            title: 'Information',--}}
-{{--                            text: res,--}}
-{{--                            type: 'error',--}}
-{{--                            styling: 'bootstrap3'--}}
-{{--                        });--}}
-{{--					}--}}
-{{--							--}}
-
-{{--				bersihFORMPasien();--}}
-{{--				data_pasien_refresh();--}}
-{{--			});--}}
-{{--		});--}}
-
-
-{{--		$('#showPasien').on('click','.deletePasien',function(){--}}
-
-{{--			$(this).closest('tr').find('.toolPasien').fadeOut();--}}
-{{--			$(this).closest('tr').find('.toolPasien').fadeIn();--}}
-
-{{--			$(this).closest('tr').find('.toolPasien').html(--}}
-{{--				'<center><b>DELETE RECORD ?</b>'+--}}
-{{--				'<button type="button" class="btn btn-danger btn-s executePasien">'+--}}
-{{--				'<i>Y</i></button>'+--}}
-{{--				'<button type="button" class="btn btn-info btn-s cancelHapusPasien">'+--}}
-{{--				'<i>N</i></button></center>');--}}
-
-{{--			$('#konfirmasi_daftar').attr('hidden',true);--}}
-{{--			$('#konfirmasi_daftar').fadeOut();--}}
-{{--			$('#konfirmasi_daftarPasien').attr('hidden',true);--}}
-{{--			$('#konfirmasi_daftarPasien').fadeOut();--}}
-
-{{--		});--}}
-
-
-{{--		$('#showPasien').on('click','.executePasien',function(){--}}
-{{--			var ini = $(this).closest('tr');--}}
-{{--			var primary = $(this).closest('tr').find('td:eq(1)').text();--}}
-{{--			var url = '{{ url("pasien/delete") }}/'+primary;--}}
-
-{{--			$.get(url,function(res){--}}
-{{--				if(res = 'Berhasil Menghapus Data Pasien'){--}}
-{{--						new PNotify({--}}
-{{--                            title: 'Information',--}}
-{{--                            text: res,--}}
-{{--                            type: 'success',--}}
-{{--                            styling: 'bootstrap3'--}}
-{{--                        });--}}
-
-{{--						ini.remove();--}}
-
-{{--					}else{--}}
-{{--						new PNotify({--}}
-{{--                            title: 'Information',--}}
-{{--                            text: res,--}}
-{{--                            type: 'error',--}}
-{{--                            styling: 'bootstrap3'--}}
-{{--                        });--}}
-{{--					}--}}
-{{--			});--}}
-
-{{--			$('#konfirmasi_daftar').attr('hidden',true);--}}
-{{--			$('#konfirmasi_daftar').fadeOut();--}}
-{{--			$('#konfirmasi_daftarPasien').attr('hidden',true);--}}
-{{--			$('#konfirmasi_daftarPasien').fadeOut();--}}
-{{--			--}}
-{{--		});--}}
-
-
-{{--		$('#showPasien').on('click','.cancelHapusPasien',function(){--}}
-{{--			$(this).closest('tr').find('.toolPasien').fadeOut();--}}
-{{--			$(this).closest('tr').find('.toolPasien').fadeIn();--}}
-
-{{--			$(this).closest('tr').find('.toolPasien').html(--}}
-{{--				'<button type="button" class="btn btn-info btn-s editPasien">'+--}}
-{{--				'<i class="fa fa-edit"></i></button>'+--}}
-{{--				'<button type="button" class="btn btn-danger btn-s deletePasien">'+--}}
-{{--				'<i class="fa fa-trash"></i></button>');--}}
-
-{{--			$('#konfirmasi_daftar').attr('hidden',true);--}}
-{{--			$('#konfirmasi_daftar').fadeOut();--}}
-{{--			$('#konfirmasi_daftarPasien').attr('hidden',true);--}}
-{{--			$('#konfirmasi_daftarPasien').fadeOut();--}}
-{{--		});--}}
-{{--                                    --}}
-
-{{--	});--}}
-{{--	// END OF PASIEN CRUD--}}
-{{--</script>--}}
-
-
 <script type="text/javascript">
 	// Dokter CRUD
 	$(function(){
@@ -2469,9 +2100,71 @@
         });
 
     });
-    // END OF PASIEN CRUD
+    // END OF PASIEN BOOKING CRUD
 </script>
 
+<script type="text/javascript">
+
+	// PASIEN CETAK NOMOR URUT
+	$(function(){
+
+		//tombol untuk memunculkan konfirmasi daftar
+
+		var kodePasien = '';
+
+		$('#showPasien').on('click','.daftarkanPasien',function(){
+			var kode = $(this).closest('tr').find('td:eq(1)').text();
+
+			var url = '{{ url("pasien/cekDaftar") }}/'+kode;
+
+			$.get(url,function(res){
+				$('.keteranganDaftar').html(res);
+			});
+
+			$('#konfirmasi_daftarPasien').attr('hidden',false);
+			$('#konfirmasi_daftarPasien').fadeOut();
+			$('#konfirmasi_daftarPasien').fadeIn();
+			kodePasien = kode;
+		});
+
+		$('#executeCetakBooking').click(function(){
+
+			var kode = kodePasien;
+			var url = '{{ url("booking/cetak") }}/'+kode;
+			$.get(url,function(res){
+
+				if(res != 'Gagal Mendaftarkan Pasien ke daftar tunggu.'){
+					new PNotify({
+						title: 'Information',
+						text: res,
+						hide: false,
+						type: 'success',
+						styling: 'bootstrap3'
+					});
+				}else{
+					new PNotify({
+						title: 'Information',
+						text: res,
+						type: 'error',
+						styling: 'bootstrap3'
+					});
+				}
+
+				$('#konfirmasi_daftarPasien').attr('hidden',true);
+				$('#konfirmasi_daftarPasien').fadeOut();
+
+			});
+
+		});
+
+		$('#tidakJadiDaftarPasien').click(function(){
+			$('#konfirmasi_daftarPasien').attr('hidden',true);
+			$('#konfirmasi_daftarPasien').fadeOut();
+		});
+
+	});
+	// END OF CETAK NOMOR URUT CRUD
+</script>
 
 <script type="text/javascript">
 

@@ -45,9 +45,7 @@
                   </li>
                   <li><a><i class="fa fa-book"></i>Booking<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="{{ url('booking') }}">Booking</a></li>
-                      <li><a href="{{ url('booking/bookingNow') }}">Booking Sekarang</a></li>
-                      <li><a href="{{ url('booking/bookingDokter') }}">Booking Dokter</a></li>
+                      <li><a href="{{ url('booking') }}">Booking Hari Ini</a></li>
                       <li><a href="{{ url('booking/resep') }}">Resep</a></li>
                     </ul>
                   </li>

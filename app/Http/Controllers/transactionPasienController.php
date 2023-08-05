@@ -41,29 +41,11 @@ class transactionPasienController extends Controller
 
     		$execute = \App\modelTransaksi::simpanPendaftaran($input);
 
-            if($execute) {
-                echo "Berhasil Menyimpan Data Pendaftaran.";
-
-                //Kode untuk mencetak nomor urut disini
-                $id = $execute;
-                $executePrint = \App\modelTransaksi::getAllDataPendaftaranPasienByID($id);
-                $executePrint = \App\modelMaster::simpanPasienTunggu($id);
-
-                if ($executePrint != 'zero') {
-                    $link = url('mockupPasien/cetakNoUrut').'/'.$executePrint;
-                    echo "<br/>Berhasil Mendaftarkan Pasien ke daftar tunggu. <br/><a class='btn btn-info btn-xs' target='_blank' href='".$link."'>Cetak No Urut</a>";
-                }else {
-                    echo "Gagal Mendaftarkan Pasien ke Daftar Tunggu.";
-                }
-            } else {
-                echo "Gagal Menyimpan Data Pendaftaran";
-            }
-
-//	    	if($execute){
-//	    		echo "Berhasil Menyimpan Data Pendaftaran.";
-//	    	}else{
-//	    		echo "Gagal Menyimpan Data Pendaftaran.";
-//	    	}
+	    	if($execute){
+	    		echo "Berhasil Menyimpan Data Pendaftaran.";
+	    	}else{
+	    		echo "Gagal Menyimpan Data Pendaftaran.";
+	    	}
 
     	}
 

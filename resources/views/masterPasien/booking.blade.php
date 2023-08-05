@@ -143,6 +143,7 @@
                               <td>{{ $value->namaPas }}</td>
                               <td>
                                 <button type="button" class="btn btn-primary btn-xs pilihPendaftaran"><i class="fa fa-check"></i> Pilih </button>
+{{--                                <button type="button" class="btn btn-success btn-xs" id="executeCetakBooking"><i class="fa fa-print"></i> CETAK NOMOR URUT</button>--}}
                               </td>
                             </tr>
                               <?php
@@ -202,7 +203,7 @@
                             }
                             ?>
                             <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target=".modal_konfirmasi"><i class="fa fa-save"></i> Proses </button>
-                            <p>Cari Data Dokter Yang Di Inginkan sesuai jadwal Praktek. Lalu tekan Proses untuk memproses.</p>
+                            <p>Cari Data Dokter Yang Di Inginkan sesuai jadwal Praktek Terlebih dahulu. Lalu tekan Proses untuk memproses. setelah itu pasien dapat mencetak Nomor Urut.</p>
                             <span><b>Pilih Dokter ( Dokter yang ada jadwal di hari <i><?php echo $hari ?></i> )</b></span>
                             <select name="pilihDokter" id="pilihDokter" class="form-control">
                               <option value="">-</option>

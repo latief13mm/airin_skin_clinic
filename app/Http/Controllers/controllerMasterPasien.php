@@ -86,14 +86,12 @@ class controllerMasterPasien extends Controller
     public function pasienSimpanBooking($id){
         $execute = \App\modelMaster::simpanBooking($id);
 
-        if($execute){
-            echo 'Berhasil Menyimpan Data dan Mendaftarkan Pasien.';
+        if($execute != 'zero'){
+            $link = url('booking/cetakNoUrut').'/'.$execute;
+            echo "Berhasil Mendaftarkan Pasien ke daftar tunggu. Tentukan jadwal dokter nya di form transaksi. <br/><a class='btn btn-info btn-xs' target='_blank' href='".$link."'>Cetak No Urut</a>";
         }else{
-            echo 'Gagal Menyimpan Data dan Mendaftarkan Pasien.';
+            echo "Gagal Mendaftarkan Pasien ke daftar tunggu.";
         }
 
     }
-
-
-
 }
