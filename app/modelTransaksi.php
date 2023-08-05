@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
+use Exception;
 
 class modelTransaksi extends Model
 {
@@ -19,6 +20,16 @@ class modelTransaksi extends Model
     	return $query->toArray();
     }
 
+    static function getCetakPendaftaranPasienByID($id){
+        $query = DB::table('pendaftaran')
+            ->selectRaw('pendaftaran.*,pasien.namaPas')
+            ->where('pendaftaran.NoPendaftaran',$id)
+            ->join('pasien','pendaftaran.NoPasien','=','pasien.NoPasien')
+            ->get();
+
+        return $query->toArray();
+    }
+
     static function getAllDataPendaftaranPasien(){
     	date_default_timezone_set('Asia/Jakarta');
     	$query = DB::table('pendaftaran')
@@ -29,6 +40,21 @@ class modelTransaksi extends Model
     			 ->get();
 
     	return $query->toArray();
+    }
+
+    static function getPendaftaranPasienByAuth(){
+        date_default_timezone_set('Asia/Jakarta');
+        $user_id = Auth::id();
+
+        $query = DB::table('pendaftaran')
+            ->selectRaw('pendaftaran.*, pasien.namaPas')
+            ->leftJoin('login', 'pendaftaran.NoPasien', '=', 'login.NoPasien')
+            ->join('pasien', 'pendaftaran.NoPasien', '=', 'pasien.NoPasien')
+            ->whereRaw('pendaftaran.tglPendaftaran = "'.date('Y-m-d').'" AND login.noUser = '.$user_id)
+            ->orderBy('noUrut', 'ASC')
+            ->get();
+
+        return $query->toArray();
     }
 
     static function getAllDokterSameAsDay(){

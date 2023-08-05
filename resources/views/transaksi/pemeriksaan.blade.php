@@ -191,8 +191,6 @@
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                               <textarea name="tindakan" id="tindakan" placeholder="Tindakan" class="form-control col-md-7 col-xs-12" cols="30" rows="2"></textarea>
-                             
-
                             </div>
                           </div>
                           <div class="form-group">
@@ -200,10 +198,8 @@
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                               <div class="input-group">
-                            <input type="number" min="0" name="berat_badan" id="berat_badan" class="form-control" placeholder="Berat Badan">
-                            <span class="input-group-btn">
-                                              <i class="btn btn-primary">pH</i>
-                                          </span>
+                            <input type="number" min="0" name="berat_badan" id="berat_badan" class="form-control" placeholder="Kelembaban Kulit">
+                            <span class="input-group-btn"><i class="btn btn-primary">pH</i></span>
                           </div>
                             </div>
                           </div>
@@ -233,12 +229,10 @@
                           </div>
                             </div>
                           </div>
-		 				  
-                        
 
                       </div>
                       <div id="step-2">
-                        <h2 class="StepTitle">Step 2 Tentukan Jenis Biaya</h2>
+                        <h2 class="StepTitle">Step 2 Tentukan Jenis Perawatan</h2>
                         <hr>
                         <button type="button" class="btn btn-info btn-s" data-toggle="modal" data-target=".modal_cari_jBiaya"><i class="fa fa-dollar"></i> Cari Jenis Biaya</button>
 

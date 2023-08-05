@@ -16,7 +16,7 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="{{ asset('Assets') }}/production/images/img.jpg" alt="..." class="img-circle profile_img">
+                <img src="{{ asset('Assets') }}/production/images/user.png" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
@@ -45,8 +45,7 @@
                   </li>
                   <li><a><i class="fa fa-book"></i>Booking<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="{{ url('booking/bookingNow') }}">Booking Sekarang</a></li>
-                      <li><a href="{{ url('booking/bookingDokter') }}">Booking Dokter</a></li>
+                      <li><a href="{{ url('booking') }}">Booking Hari Ini</a></li>
                       <li><a href="{{ url('booking/resep') }}">Resep</a></li>
                     </ul>
                   </li>
@@ -102,7 +101,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="{{ asset('Assets') }}/production/images/img.jpg" alt="">{{ $namaPasien }}
+                    <img src="{{ asset('Assets') }}/production/images/user.png" alt="">{{ $namaPasien }}
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">

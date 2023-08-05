@@ -45,8 +45,7 @@
 
                <div>
                  <input type="checkbox" name="remember" /> Remember Me
-                <input type="submit" value="Sign In" class="btn btn-default submit">
-                <input type="submit" value="Register" class="btn btn-default submit">
+                 <input type="submit" value="Sign In" class="btn btn-default submit">
                </div>
               
               

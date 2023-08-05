@@ -12,24 +12,6 @@ class controllerMasterPasien extends Controller
     	return view('masterPasien/profile');
     }
 
-    public function pasienSimpanDaftar(Request $request){
-    	$input = $request->all();
-    	
-    	$execute = \App\modelMaster::simpanPasienDaftar($input);
-
-    	if($execute){
-    		echo 'Berhasil Menyimpan Data dan Mendaftarkan Pasien.';
-    	}else{
-    		echo 'Gagal Menyimpan Data dan Mendaftarkan Pasien.';
-    	}
-
-    }
-
-	public function booking(){
-    	$data['Listpasien'] = \App\modelMaster::getDataPasienById();
-    	return view('masterPasien/pasien')->with($data);
-    }
-
 	public function profileUpdate(Request $request){
 		// dd($request->all());
     	$input = $request->all();
@@ -54,7 +36,24 @@ class controllerMasterPasien extends Controller
     	}
     }
 
-    public function daftarkanPasienNow($id){
+
+	public function jenis_biaya(){
+    	$data['Listjenisbiaya'] = \App\modelMaster::getListJenisBiaya();
+    	return view('masterPasien/jenis_biaya')->with($data);
+    }
+
+	public function jadwal_praktek(){
+		$data['dataPraktek'] = \App\laporanModel::getDataJadwalPraktek();
+    	return view('masterPasien/jadwal_praktek')->with($data);
+    }
+
+	public function booking(){
+    	$data['Listpasien'] = \App\modelMaster::getDataPasienById();
+    	return view('masterPasien/pasien')->with($data);
+    }
+
+
+	public function daftarkanPasienNow($id){
     	$execute = \App\modelMaster::simpanPasienTunggu($id);
 
     	if($execute != 'zero'){
@@ -65,18 +64,34 @@ class controllerMasterPasien extends Controller
     	}
     }
 
-	public function jenis_biaya(){
-    	$data['Listjenisbiaya'] = \App\modelMaster::getListJenisBiaya();
-    	return view('masterPasien/jenis_biaya')->with($data);
+	public function pasienSimpanDaftar(Request $request){
+    	$input = $request->all();
+    	
+    	$execute = \App\modelMaster::simpanPasienDaftar($input);
+
+    	if($execute){
+    		echo 'Berhasil Menyimpan Data dan Mendaftarkan Pasien.';
+    	}else{
+    		echo 'Gagal Menyimpan Data dan Mendaftarkan Pasien.';
+    	}
+
     }
 
-	public function jadwal_praktek(){
-    	// $data['Listjadwalpraktek'] = \App\modelMaster::getAllDataJadwal();
-		$data['dataPraktek'] = \App\laporanModel::getDataJadwalPraktek();
-    	return view('masterPasien/jadwal_praktek')->with($data);
+    public function booking_v1() {
+        $data['getDataPendaftaran'] = \App\modelTransaksi::getPendaftaranPasienByAuth();
+        $getPasien['listBookingPasien'] = \App\userModel::getPasienById();
+        return view('masterPasien/booking', $getPasien)->with($data);
     }
 
+    public function pasienSimpanBooking($id){
+        $execute = \App\modelMaster::simpanBooking($id);
 
+        if($execute != 'zero'){
+            $link = url('booking/cetakNoUrut').'/'.$execute;
+            echo "Berhasil Mendaftarkan Pasien ke daftar tunggu. Tentukan jadwal dokter nya di form transaksi. <br/><a class='btn btn-info btn-xs' target='_blank' href='".$link."'>Cetak No Urut</a>";
+        }else{
+            echo "Gagal Mendaftarkan Pasien ke daftar tunggu.";
+        }
 
-
+    }
 }

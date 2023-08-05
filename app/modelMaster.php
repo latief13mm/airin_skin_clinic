@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
+use Exception;
 
 class modelMaster extends Model
 {	
@@ -130,6 +131,52 @@ class modelMaster extends Model
     	return $NoUrutArr;
     }
 
+
+    static function simpanPasienRegister($input){
+		try {
+    	date_default_timezone_set('Asia/Jakarta');
+    	$noOtomatis = \App\modelMaster::getNoOtomatisPasien();
+    	
+    	$query = DB::table('pasien')
+    			 ->insert([
+    			 	'NoPasien' => $noOtomatis,
+    			 	'namaPas' => $input['nama_pasien'],
+    			 	'almPas' => $input['alamat_pasien'],
+    			 	'telpPas' => $input['telp_pasien'],
+    			 	'tglLahirPas' => $input['tglLahir_pasien'],
+    			 	'jenisKelPas' => $input['jenisKel_pasien'],
+    			 	'tglRegistrasi' => date('Y-m-d')
+    			 ]);
+
+				 $queryCHECK = DB::table('login')
+							->where('NoPasien',$noOtomatis)
+							->orderBy('noUser','DESC')
+							->limit('1')
+							->get();
+
+				 $noUser = '';
+				 foreach ($queryCHECK->toArray() as $key => $value) {
+					 $noUser = $value->noUser;
+				 }
+ 
+				 $queryUPD = DB::table('login')
+							 ->where('noUser',$noUser)
+							 ->insert([
+								'username' => $input['username'],
+								'password' =>  bcrypt($input['password']),
+								'typeUser' => 'PASIEN',
+								'NoPasien' => $noOtomatis
+							]);
+
+				 return true;
+		 } catch (Exception $e) {
+				 return false;
+		 }
+
+    	// if($query) return true; else return false;
+    }
+
+
     static function simpanPasien($input){
     	date_default_timezone_set('Asia/Jakarta');
     	$noOtomatis = \App\modelMaster::getNoOtomatisPasien();
@@ -168,6 +215,7 @@ class modelMaster extends Model
 	    			 	'jenisKelPas' => $input['jenisKel_pasien'],
 	    			 	'tglRegistrasi' => date('Y-m-d')
 	    			 ]);
+					 
 
 	    	$query2 = DB::table('pendaftaran')
 	    			  ->insert([
@@ -204,6 +252,50 @@ class modelMaster extends Model
 	    			  ]);
 
 	    if($query2) return $NoOtomatisPendaftaran; else return 'zero';
+    }
+
+//    coba cetak nomor urut
+    static function ambilNomorUrut($id)
+    {
+        return self::cetakNomorUrut($id);
+    }
+
+
+
+
+
+    static function cetakNomorUrut($id){
+        date_default_timezone_set('Asia/Jakarta');
+        $query2 = DB::table('pendaftaran')
+            ->where('NoPendaftaran', $id)
+            ->first();
+
+        if ($query2) {
+            return $query2->NoPendaftaran;
+        } else {
+            return 'zero';
+        }
+    }
+
+
+	static function simpanBooking($id){
+        date_default_timezone_set('Asia/Jakarta');
+        $NoOtomatisPendaftaran = \App\modelMaster::getNoOtomatisPendaftaran();
+        $noUrut = \App\modelMaster::getNoUrut();
+        $nip = \App\modelMaster::getUser();
+
+        $query2 = DB::table('pendaftaran')
+            ->insert([
+                'NoPendaftaran' => $NoOtomatisPendaftaran,
+                'tglPendaftaran' => date('Y-m-d'),
+                'noUrut' => $noUrut,
+                'NIP' => $nip,
+                'NoPasien' => $id,
+                'KodeJadwal' => 'NOTHING'
+            ]);
+
+        if($query2) return $NoOtomatisPendaftaran; else return 'zero';
+
     }
 
     static function editPasien($input){
@@ -445,7 +537,6 @@ class modelMaster extends Model
                 return false;
         }
 
-    	// if($query) return true;else return false;
     }
 
     static function simpanPerubahanPegawai($input){
