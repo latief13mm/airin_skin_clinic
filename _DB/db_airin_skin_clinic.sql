@@ -251,7 +251,7 @@ CREATE TABLE `obat` (
 --
 
 INSERT INTO `obat` (`KodeObat`, `nmObat`, `merk`, `satuan`, `hargaJual`) VALUES
-('B0001', 'Facial Wash All Skin Type', 'Airin Beauty', 'Sachet', 80000),
+('B0001', 'Facial Wash All Skin Type', 'Airin Beauty', 'Tube', 80000),
 ('B0002', 'Facial Wash Acne Type 2', 'Airin Facial Wash', 'Tube', 60000),
 ('B0003', 'Niacinamide Gel', 'Airin Beauty', 'Cup', 63000),
 ('B0004', 'Hydrating Primer Toner', 'Airin Beauty', 'Tube', 102300),
