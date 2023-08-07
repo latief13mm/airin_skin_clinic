@@ -44,9 +44,10 @@
                   </div>
                   <div class="x_content">
 
-                    <p>Pilih hari praktek atau cetak semua.</p>
+                    <p>Pilih hari oppersional atau cetak semua.</p>
 
-                    <a class="btn btn-primary btn-s" href="{{ url('cetakJadwal') }}" target="_blank">CETAK SEMUA</a>
+
+
                     <a class="btn btn-info btn-s cetakFilterJadwal" href="#" target="_blank">CETAK BERDASAR HARI</a>
                     <select class="form-control filterJadwal">
                       <option value="">-</option>
@@ -66,7 +67,7 @@
               <div class="col-md-6">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Data Jadwal Praktek</h2>
+                    <h2>Data Jadwal Operasional</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>

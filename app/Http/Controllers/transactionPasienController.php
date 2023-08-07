@@ -14,7 +14,7 @@ class transactionPasienController extends Controller
 
     
     public function pendaftaran_pasien(){
-    	$data['getDataPendaftaran'] = \App\modelTransaksi::getAllDataPendaftaranPasien();
+    	$data['getDataPendaftaran'] = \App\modelTransaksi::getPendaftaranPasienByAuth();
     	return view('transaksiPasien/pendaftaran')->with($data);
     }
 
