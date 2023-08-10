@@ -286,6 +286,43 @@ class modelTransaksi extends Model
     	return $query->toArray();
     }
 
+//    static function getAllDataPemeriksaanJoinByAuth(){
+//        // Mengambil user ID yang sedang login
+//        $user_id = Auth::id();
+//
+//        $query = DB::table('pemeriksaan')
+//            ->selectRaw('pemeriksaan.NoPemeriksaan, pemeriksaan.NoPendaftaran, pendaftaran.NoPasien, pasien.namaPas')
+//            ->join('pendaftaran', 'pemeriksaan.NoPendaftaran', '=', 'pendaftaran.NoPendaftaran')
+//            ->join('pasien', 'pendaftaran.NoPasien', '=', 'pasien.NoPasien')
+//            ->join('resep', 'pemeriksaan.NoPemeriksaan', '=', 'resep.NoPemeriksaan')
+//            ->where('resep.proses', 'Menuju Apoteker')
+//            // Menambahkan kondisi WHERE untuk memfilter berdasarkan user ID
+//            ->where('pendaftaran.NoPasien', $user_id)
+//            ->get();
+//
+//        return $query->toArray();
+//    }
+
+    static function getAllDataPemeriksaanJoinByAuth(){
+        date_default_timezone_set('Asia/Jakarta');
+        $user_id = Auth::id();
+
+        $query = DB::table('pemeriksaan')
+            ->selectRaw('pemeriksaan.NoPemeriksaan, pemeriksaan.NoPendaftaran, pendaftaran.NoPasien, pasien.namaPas')
+            ->join('pendaftaran', 'pemeriksaan.NoPendaftaran', '=', 'pendaftaran.NoPendaftaran')
+            ->join('pasien', 'pendaftaran.NoPasien', '=', 'pasien.NoPasien')
+            ->join('resep', 'pemeriksaan.NoPemeriksaan', '=', 'resep.NoPemeriksaan')
+            ->join('login', 'pendaftaran.NoPasien', '=', 'login.NoPasien')
+            ->where('resep.proses', 'Menuju Apoteker')
+            ->where('login.noUser', $user_id)
+            ->whereRaw('pendaftaran.tglPendaftaran = "'.date('Y-m-d').'"')
+            ->get();
+
+        return $query->toArray();
+    }
+
+
+
     // PENGAMBILAN DATA SATU PER SATU
     static function getAlamatPasienByID($id){
     	try {

@@ -86,7 +86,7 @@ class transactionPasienController extends Controller
     }
 
     public function resepPasien(){
-    	$data['listPemeriksaan'] = \App\modelTransaksi::getAllDataPemeriksaanJoin();
+    	$data['listPemeriksaan'] = \App\modelTransaksi::getAllDataPemeriksaanJoinByAuth();
     	return view('transaksiPasien/resep')->with($data);
     }
 }
