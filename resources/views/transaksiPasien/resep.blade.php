@@ -211,47 +211,13 @@
                     <tr>
                       <td>&nbsp;</td>
                     </tr>
-                    <tr id="munculTombol">
-                      
-                    </tr>
                   </table>
-  
                   </div>
                 </div>
               </div>
-              
             </div>
           </div>
         </div>
-
-        <div class="modal fade modal_konfirmasiResep" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog modal-sm">
-                      <div class="modal-content">
-                       
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
-                          </button>
-                          <h4 class="modal-title" id="myModalLabel2">Konfirmasi Transaksi</h4>
-                        </div>
-                        <div class="modal-body">
-                          <h4><center>Yakin ? </center></h4>
-                          
-                          <p>
-                          <center>
-                            <button type="button" class="btn btn-success simpanDataResep" data-dismiss="modal">Ya</button>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Tidak</button>
-                          </center>
-                          </p>
-
-                        </div>
-                        <div class="modal-footer">
-                          <small>KEFKA</small>
-                        </div>
-                     
-                      </div>
-                    </div>
-                  </div>
-
 
 @endsection
 
