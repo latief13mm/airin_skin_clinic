@@ -173,9 +173,9 @@ class modelTransaksi extends Model
     				   	'diagnosa' => $input['diagnosa'],
     				   	'perawatan' => $input['perawatan'],
     				   	'tindakan' => $input['tindakan'],
-    				   	'beratBadan' => $input['berat_badan'],
-    				   	'tensiDiastolik' => $input['tensiDiastolik'],
-    				   	'tensiSistolik' => $input['tensiSistolik'],
+    				   	// 'beratBadan' => $input['berat_badan'],
+    				   	// 'tensiDiastolik' => $input['tensiDiastolik'],
+    				   	// 'tensiSistolik' => $input['tensiSistolik'],
     				   	'NoPendaftaran' => $input['NoPendaftaran']
     				   ]);
 

@@ -180,15 +180,15 @@
                     <tr>
                       <td>Tindakan : <b id="tinKet"></b></td>
                     </tr>
-                    <tr>
-                      {{-- <td>Berat Badan : <b id="berKet"></b></td> --}}
+                    {{-- <tr>
+                      <td>Berat Badan : <b id="berKet"></b></td>
                     </tr>
                     <tr>
-                      {{-- <td>Tensi Diastolik : <b id="tensiDiaKet"></b></td> --}}
+                      <td>Tensi Diastolik : <b id="tensiDiaKet"></b></td>
                     </tr>
                     <tr>
-                      {{-- <td>Tensi Sistolik : <b id="tensiSisKet"></b></td> --}}
-                    </tr>
+                      <td>Tensi Sistolik : <b id="tensiSisKet"></b></td>
+                    </tr> --}}
                     <tr>
                       <td>&nbsp;</td>
                     </tr>

@@ -36,8 +36,8 @@
 <body onload="window.print()">
 	<table border="1">
 		<tr>
-			<td colspan="6"><h3><center>POLIKLINIK CENTRAL</center></h3>
-				<h5><center>Lead the rest of sick people</center></h5>
+			<td colspan="6"><h3><center>AIRIN SKIN CLINIC</center></h3>
+				<h5><center>Lead Beauty And Fresh</center></h5>
 			</td>
 		</tr>
 		<tr>
@@ -81,7 +81,7 @@
 			<td>Tindakan :</td>
 			<td colspan="5">{{ $tindakan }}</td>
 		</tr>
-		<tr>
+		{{-- <tr>
 			<td>Berat Badan :</td>
 			<td colspan="5">{{ $beratBadan }} Kg.</td>
 		</tr>
@@ -90,9 +90,9 @@
 			<td colspan="5">{{ $tensiDiastolik }} mmHg.</td>
 		</tr>
 		<tr>
-			{{-- <td>Tensi Sistolik :</td>
-			<td colspan="5">{{ $tensiSistolik }} mmHg.</td> --}}
-		</tr>
+			<td>Tensi Sistolik :</td>
+			<td colspan="5">{{ $tensiSistolik }} mmHg.</td>
+		</tr> --}}
 		<tr>
 			<td colspan="6"><hr></td>
 		</tr>
@@ -167,7 +167,7 @@
 			<td colspan="6"><hr></td>
 		</tr>
 		<tr>
-			<td colspan="6"><center><small>Segera menuju apoteker untuk mengambil obat dan membayar.</small></center></td>
+			<td colspan="6"><center><small>Segera menuju kasir untuk mengambil Product dan membayar.</small></center></td>
 		</tr>
 	</table>
 </body>

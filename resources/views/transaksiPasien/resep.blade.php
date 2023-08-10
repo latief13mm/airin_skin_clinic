@@ -180,7 +180,7 @@
                     <tr>
                       <td>Tindakan : <b id="tinKet"></b></td>
                     </tr>
-                    <tr>
+                    {{-- <tr>
                       <td>Berat Badan : <b id="berKet"></b></td>
                     </tr>
                     <tr>
@@ -188,7 +188,7 @@
                     </tr>
                     <tr>
                       <td>Tensi Sistolik : <b id="tensiSisKet"></b></td>
-                    </tr>
+                    </tr> --}}
                     <tr>
                       <td>&nbsp;</td>
                     </tr>

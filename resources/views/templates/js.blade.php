@@ -1918,9 +1918,9 @@
 			$('#diagnosa').val('');
 			$('#perawatan').val('');
 			$('#tindakan').val('');
-			$('#berat_badan').val('');
-			$('#tensiDiastolik').val('');
-			$('#tensiSistolik').val('');
+			// $('#berat_badan').val('');
+			// $('#tensiDiastolik').val('');
+			// $('#tensiSistolik').val('');
 
 			$('#appendBiayaHere').html('');
 			$('#appendObatHere').html('');

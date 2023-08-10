@@ -81,7 +81,7 @@
 			<td>Tindakan :</td>
 			<td colspan="5">{{ $tindakan }}</td>
 		</tr>
-		<tr>
+		{{-- <tr>
 			<td>Berat Badan :</td>
 			<td colspan="5">{{ $beratBadan }} Kg.</td>
 		</tr>
@@ -90,9 +90,9 @@
 			<td colspan="5">{{ $tensiDiastolik }} mmHg.</td>
 		</tr>
 		<tr>
-			{{-- <td>Tensi Sistolik :</td>
-			<td colspan="5">{{ $tensiSistolik }} mmHg.</td> --}}
-		</tr>
+			<td>Tensi Sistolik :</td>
+			<td colspan="5">{{ $tensiSistolik }} mmHg.</td>
+		</tr> --}}
 		<tr>
 			<td colspan="6"><hr></td>
 		</tr>
@@ -167,7 +167,7 @@
 			<td colspan="6"><hr></td>
 		</tr>
 		<tr>
-			<td colspan="6"><center><small>Segera menuju apoteker untuk mengambil obat dan membayar.</small></center></td>
+			<td colspan="6"><center><small>Segera menuju kasir untuk mengambil Product dan membayar.</small></center></td>
 		</tr>
 	</table>
 </body>
