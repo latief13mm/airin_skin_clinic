@@ -68,7 +68,7 @@
                           <ul class="nav child_menu">
                             <li><a href="{{ url('laporan/jadwal') }}">Jadwal praktek dokter</a></li>
                             <li><a href="{{ url('laporan/daftar_pasien_sudah') }}">Daftar pasien telah diperiksa</a></li>
-                            <li><a href="{{ url('laporan/daftar_pasien_belum') }}">Daftar Reschedule</a></li>
+                            <li><a href="{{ url('laporan/daftar_pasien_belum') }}">Daftar pasien yang belum diperiksa</a></li>
                           </ul>
                         </li>
 

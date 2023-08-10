@@ -90,8 +90,8 @@
 			<td colspan="5">{{ $tensiDiastolik }} mmHg.</td>
 		</tr>
 		<tr>
-			<td>Tensi Sistolik :</td>
-			<td colspan="5">{{ $tensiSistolik }} mmHg.</td>
+			{{-- <td>Tensi Sistolik :</td>
+			<td colspan="5">{{ $tensiSistolik }} mmHg.</td> --}}
 		</tr>
 		<tr>
 			<td colspan="6"><hr></td>

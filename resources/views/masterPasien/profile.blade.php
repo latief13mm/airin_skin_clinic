@@ -47,7 +47,7 @@
                       <img class="img-circle profile_img" src="{{ asset('Assets') }}/production/images/user.png">
                       <div class="card-body" align="center">
                         <h1 class="card-title">{{ $namaPasien }}</h1>
-                        <a href="#" class="btn btn-primary">Ubah Foto Profile</a>
+                        <a href="#" class="btn btn-primary"></a>
                       </div>
                     </div>
                     <!-- end profile list -->
@@ -101,7 +101,7 @@
                       <td>&nbsp;</td>
                     </tr>
                   </table>
-                  <button type="button" class="btn btn-primary" data-nopasien="{{ $id }}" data-namapasien="{{ $namaPasien }}" data-alamatpasien="{{ $alamatPasien }}" data-telephonepasien="{{ $telephonePasien }}" data-tgllahirpasien="{{ $tglLahirPasien }}" data-jeniskelaminpasien="{{ $jenisKelaminPasien }}"  data-toggle="modal" data-target="#editProfile" >Edit Foto Profile</button>
+                  <button type="button" class="btn btn-primary" data-nopasien="{{ $id }}" data-namapasien="{{ $namaPasien }}" data-alamatpasien="{{ $alamatPasien }}" data-telephonepasien="{{ $telephonePasien }}" data-tgllahirpasien="{{ $tglLahirPasien }}" data-jeniskelaminpasien="{{ $jenisKelaminPasien }}"  data-toggle="modal" data-target="#editProfile" >Edit Profile</button>
                   {{-- <button class="btn btn-info btn-s editProfile"  id="editProfile" type="submit" data-toggle="modal" data-target=".modal_editProfile">Ubah Data Profile</button>   --}}
                   </div>
                 </div>

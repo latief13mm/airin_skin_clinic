@@ -222,8 +222,8 @@
                           </div>
 
                           <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Tensi Sistolik <span class="required">*</span>
-                            </label>
+                            {{-- <label class="control-label col-md-3 col-sm-3 col-xs-12">Tensi Sistolik <span class="required">*</span>
+                            </label> --}}
                             <div class="col-md-6 col-sm-6 col-xs-12">
                               <div class="input-group">
                             <input type="number" min="0" name="tensiSistolik" id="tensiSistolik" class="form-control" placeholder="Tensi Sistolik">
@@ -240,9 +240,9 @@
                       <div id="step-2">
                         <h2 class="StepTitle">Step 2 Tentukan Jenis Biaya</h2>
                         <hr>
-                        <button type="button" class="btn btn-info btn-s" data-toggle="modal" data-target=".modal_cari_jBiaya"><i class="fa fa-dollar"></i> Cari Jenis Biaya</button>
+                        <button type="button" class="btn btn-info btn-s" data-toggle="modal" data-target=".modal_cari_jPerawatan"><i class="fa fa-dollar"></i> Cari Jenis Biaya</button>
 
-                        <div class="modal fade modal_cari_jBiaya" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal fade modal_cari_jPerawatan" tabindex="-1" role="dialog" aria-hidden="true">
 
 	                    <div class="modal-dialog modal-lg">
 	                      <div class="modal-content">
@@ -257,8 +257,8 @@
 	                        	<table class="table table-bordered" id="tableJenisBiaya">
 	                        		<thead>
 	                        			<tr>
-	                        				<th>ID Jenis Biaya</th>
-	                        				<th>Nama Biaya</th>
+	                        				<th>ID Jenis Perawatan</th>
+	                        				<th>Nama Perawatan</th>
 	                        				<th>Tarif</th>
 	                        				<th>Alat</th>
 	                        			</tr>
